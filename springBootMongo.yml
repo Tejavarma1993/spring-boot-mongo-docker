@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: tejavarma1993/spring-boot-mongo-docker:2
+        image: tejavarma1993/spring-boot-mongo-docker-k8
         ports:
         - containerPort: 8080
         env:
