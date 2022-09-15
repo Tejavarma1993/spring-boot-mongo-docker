@@ -12,21 +12,21 @@ services:
     depends_on:
       - mongo
     networks:
-    - springappnetwork  
+    - springapp  
   mongo:
     image: mongo
     environment:
     - MONGO_INITDB_ROOT_USERNAME=devdb
     - MONGO_INITDB_ROOT_PASSWORD=devdb123
     volumes:
-      - mongodb:/data/db
+      - /home/k_teja_varma/mongodb:/data/db
     networks:
-    - springappnetwork
+    - springapp
     
 volumes:
   mongodb:
     external: true
     
 networks:
-  springappnetwork:
+  springapp:
     external: true
