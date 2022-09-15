@@ -29,4 +29,4 @@ volumes:
     
 networks:
   springapp:
-    external: true
+    driver: bridge
