@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   springboot:
-    image: tejavarma1993/spring-boot-mongo-docker-compose:19
+    image: tejavarma1993/spring-boot-mongo-compose-jenkins:buildnumber
     restart: always # This will be ignored if we deploy in docker swarm
     environment:
     - MONGO_DB_HOSTNAME=mongo
@@ -14,7 +14,7 @@ services:
     depends_on:
       - mongo
     networks:
-    - springappnetwork  
+    - springappoverlay
     deploy:  # This will be considered only in docker swarm.
       replicas: 6
       update_config:
@@ -34,12 +34,12 @@ services:
       - mongodb:/data/db
     restart: always
     networks:
-      - springappnetwork
+      - springappoverlay
     
 volumes:
   mongodb:
     external: true
     
 networks:
-  springappnetwork:
-    external: true
+  springappoverlay:
+    driver: overlay
